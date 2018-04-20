@@ -1,0 +1,13 @@
+{
+  "name": "invoice-rest-api",
+  "version": "1.0.0",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.5.1",
+    "express": "^4.7.1",
+    "firebase-admin": "^5.12.0",
+    "method-override": "^2.1.2",
+    "mongojs": "^2.5.0",
+    "mongoose": "~5.0.15"
+  }
+}

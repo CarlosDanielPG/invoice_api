@@ -1,0 +1,11 @@
+{ rid: '04b51a1b-186f-4791-9101-5443af7da61a',
+  code: 200,
+  errors: null,
+  status: true,
+  message: null,
+  response: {
+    id_taxpayer: '5ad5442c0b212a49548b45a0',
+    taxpayer: 'AAA010101AAA',
+    s_id: 'paybook1.0'
+  } 
+}
