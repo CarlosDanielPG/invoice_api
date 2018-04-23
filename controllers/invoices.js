@@ -52,10 +52,10 @@ exports.addInvoice = function(req, res) {
         postalCode: req.body.reciever.address.postalCode
       }
     },
-    concepts: [ req.body.concepts ],
+    concepts: req.body.concepts,
 		taxes: {
-			retentions: [ req.body.taxes.retentions ],
-			transfers: [ req.body.taxes.transfers ]
+			retentions: req.body.taxes.retentions,
+			transfers: req.body.taxes.transfers
 		}
 	});
 
@@ -69,8 +69,12 @@ exports.addInvoice = function(req, res) {
 //PUT - Update a invoice already exists
 exports.updateInvoice = function(req, res) {
 	Invoice.findById(req.params.id, function(err, invoice) {
-		invoice.name   = req.body.name;
-		invoice.sexo    = req.body.sexo;
+		invoice.params.serie    				= req.body.params.serie;
+		invoice.params.folio						= req.body.params.folio;
+		invoice.params.methodOfPayment	= req.body.params.methodOfPayment;
+		invoice.params.termsOfPayment		= req.body.params.termsOfPayment;
+		invoice.params.discount					= req.body.params.discount;
+		invoice.params.discountReason		= req.body.params.discountReason;
 
 		invoice.save(function(err) {
 			if(err) return res.status(500).send(err.message);
@@ -85,7 +89,7 @@ exports.deleteInvoice = function(req, res) {
 	Invoice.findById(req.params.id, function(err, invoice) {
 		invoice.remove(function(err) {
 			if(err) return res.status(500).send(err.message);
-      res.status(200).send();
+      return res.status(200).send();
 		})
 	});
 };

@@ -31,7 +31,7 @@ var invoiceSchema = new Schema({
     {
       quantity : { type: String },
       unit : { type: String, enum:
-        ['kg', 'mt', 'hr'] },
+        ['kg', 'mt', 'hr', 'yr'] },
       description : { type: String },
       IdNumber : { type: String },
       unitValue : { type: String },
