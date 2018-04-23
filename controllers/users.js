@@ -1,11 +1,6 @@
-var mongoose = require('mongoose'),
-    Schema   = mongoose.Schema;
-var user_schema = new Schema({
-  name      :  { type: String },
-  sexo      :  { type: String },
-});
-
-var User = mongoose.model('User', user_schema);
+var mongoose = require('mongoose');
+require('../models/user');
+var User = mongoose.model('User');
 
 //GET - Return all tvshows in the DB
 exports.findAllUsers = function(req, res) {
@@ -33,7 +28,11 @@ exports.addUser = function(req, res) {
 
 	var user = new User({
 		name:    req.body.name,
-		sexo: 	  req.body.sexo
+		sexo: 	  req.body.sexo,
+    direccion: {
+      calle: req.body.direccion.calle,
+      numero: req.body.direccion.numero
+    }
 	});
 
 	user.save(function(err, user) {

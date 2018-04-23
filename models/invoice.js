@@ -2,54 +2,54 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var invoiceSchema = new Schema({
-  id_user: { type: String },
+  id_user: { type: String, required: true },
   params : {
-    serie : { type: String },
-    folio : {type: String },
-    methodOfPayment : { type: String },
+    serie : { type: String, required: true },
+    folio : {type: String, required: true },
+    methodOfPayment : { type: String, required: true },
     termsOfPayment : { type: String },
-    discount : { type: Number},
+    discount : { type: String },
     discountReason : { type: String },
-    exchargeRate : { type: Number },
+    exchargeRate : { type: String },
     currency : { type: String },
     typeOfVoucher : { type: String },
-    expeditionPlace : { type: String },
-    paymentAccountNumber : { type: Number }
+    expeditionPlace : { type: String, required: true },
+    paymentAccountNumber : { type: String, required: true }
   },
   reciever: {
-    rfc : { type: String },
-    nombre : { type: String },
+    rfc : { type: String, required: true },
+    name : { type: String, required: true },
     address : {
-      street : { type: String },
-      municipality : { type: String },
-      state : { type: String },
-      country : { type: String },
-      postalCode : { type: Number }
+      street : { type: String, required: true },
+      municipality : { type: String, required: true },
+      state : { type: String, required: true },
+      country : { type: String, required: true },
+      postalCode : { type: String, required: true }
     }
   },
   concepts: [
     {
-      quantity : { type: Number },
+      quantity : { type: String },
       unit : { type: String, enum:
-        ['kg', 'mt', 'hr']},
+        ['kg', 'mt', 'hr'] },
       description : { type: String },
-      IdNumber : { type: Number },
-      unitValue : { type: Number },
-      amount : { type: Number }
+      IdNumber : { type: String },
+      unitValue : { type: String },
+      amount : { type: String }
     }
   ],
   taxes: {
     retentions : [
       {
         taxName : { type: String },
-        amount : { type: Number }
+        amount : { type: String }
       }
     ],
     transfers : [
       {
         taxName : { type: String },
-        rate : { type: Number },
-        amount : { type: Number }
+        rate : { type: String },
+        amount : { type: String }
       }
     ]
   }
