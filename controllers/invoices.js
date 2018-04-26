@@ -87,7 +87,7 @@ exports.addInvoice = function(req, res) {
 
 	invoice.save(function(err, invoice) {
 		if(err) return res.status(500).send( err.message);
-    res.status(200).jsonp(invoice);
+    res.status(200).jsonp(invoice._id);
 		console.log(invoice._id);
 	});
 };
@@ -124,7 +124,7 @@ exports.updateInvoice = function(req, res) {
 
 		invoice.save(function(err) {
 			if(err) return res.status(500).send(err.message);
-      res.status(200).jsonp(invoice);
+      res.status(200).jsonp(invoice._id);
 		});
 	});
 };
@@ -135,6 +135,8 @@ exports.deleteInvoice = function(req, res) {
 	Invoice.findById(req.params.id, function(err, invoice) {
 		if(!invoice)
 			return res.status(404).send('Not found invoice');
+		if(invoice.status == 'Sealed')
+			return res.status(401).send('Invoice sealed');
 		invoice.remove(function(err) {
 			if(err) return res.status(500).send(err.message);
 			console.log('DELETE /invoices/');
