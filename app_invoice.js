@@ -44,4 +44,13 @@ invoices.route('/invoices/:id')
   .put(InvoiceController.updateInvoice)
   .delete(InvoiceController.deleteInvoice);
 
+invoices.route('/invoices/user/:id_user')
+  .get(InvoiceController.findInvoicesByUser);
+
+invoices.route('/invoices/stamp')
+  .post(InvoiceController.stampInvoice);
+
+invoices.route('/invoices/stamp/:id')
+  .post(InvoiceController.stampInvoiceById);
+
 app.use('/api', invoices);

@@ -1,6 +1,6 @@
 var axios = require('axios');
 
-var id_user = '5ad5365d0b212afd7d8b458c';
+var id_user = '5ae0fd620b212a00638b45f8';
 
 var data = {
   api_key: process.env.PAYBOOK_KEY,
@@ -98,8 +98,6 @@ var data = {
 		}
   }
 };
-
-
 
 axios.post(process.env.PAYBOOK_URL + 'invoicing/mx/invoices', data, {
   headers : {

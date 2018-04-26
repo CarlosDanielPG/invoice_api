@@ -30,6 +30,7 @@ user.get()
             console.log('No such document!');
         } else {
             console.log('Document data:', doc.data());
+            console.log('Regime: ', doc.data().sat[0].regime);
         }
     })
     .catch(err => {
